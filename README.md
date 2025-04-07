@@ -18,9 +18,9 @@ This project presents a comprehensive comparison of traditional machine learning
 
 | File              | Purpose                                         | Outputs Generated                          |
 |-------------------|--------------------------------------------------|---------------------------------------------|
-| scripts/ML&DL.py  | Trains Logistic Regression, XGBoost, RNN/LSTM   | models/xgb_model.json, FNN_best_params.json |
-| scripts/BERT.py   | Fine-tunes DistilBERT model                     | models/BERT_best_params.json                |
-| scripts/Pred.py   | End-to-end prediction pipeline                  | Generates category labels for new inputs    |
+| ML&DL.py  | Trains Logistic Regression, XGBoost, RNN/LSTM   | models/xgb_model.json, FNN_best_params.json |
+| BERT.py   | Fine-tunes DistilBERT model                     | models/BERT_best_params.json                |
+| Pred.py   | End-to-end prediction pipeline                  | Generates category labels for new inputs    |
 
 #### 2. Data training Resources and data final challenge file
 
