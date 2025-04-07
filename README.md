@@ -12,38 +12,45 @@ This project presents a comprehensive comparison of traditional machine learning
 
 ## 📁 Project Structure
 
-data/ │ news-dataset.csv # 6,000 labeled articles (train/val) │ news-challenge.csv # 1,000 unlabeled articles (test) models/ │ xgb_model.json # Trained XGBoost model │ FNN_best_params.json # Best parameters for feedforward model │ BERT_best_params.json # Best parameters for DistilBERT scripts/ │ ML&DL.py # Trains traditional and deep learning models │ BERT.py # Fine-tunes DistilBERT │ Pred.py # End-to-end prediction pipeline report.pdf # Full technical report (methods, experiments) annotated_outcome.pdf # Expert-reviewed model predictions on test set
+### 🔧 Key Components
 
-shell
-复制
-编辑
+#### 1. Core Implementation
 
-## 🚀 Getting Started
+| File              | Purpose                                         | Outputs Generated                          |
+|-------------------|--------------------------------------------------|---------------------------------------------|
+| scripts/ML&DL.py  | Trains Logistic Regression, XGBoost, RNN/LSTM   | models/xgb_model.json, FNN_best_params.json |
+| scripts/BERT.py   | Fine-tunes DistilBERT model                     | models/BERT_best_params.json                |
+| scripts/Pred.py   | End-to-end prediction pipeline                  | Generates category labels for new inputs    |
 
-### Environment Setup
+#### 2. Data training Resources and data final challenge file
 
-```bash
-conda env create -f environment.yml
-Training Models
-1. Traditional & Deep Learning Models
-bash
-复制
-编辑
-python scripts/ML&DL.py --data data/news-dataset.csv --optimize
-2. Transformer-based Model (DistilBERT)
-bash
-复制
-编辑
-python scripts/BERT.py --data data/news-dataset.csv --epochs 10
-Run Predictions
-bash
-复制
-编辑
-python scripts/Pred.py --model bert --input data/news-challenge.csv
-📊 Benchmark Results
-Model	Accuracy	F1 Score	Training Time	Hardware
-XGBoost	93.0%	0.930	2 min	CPU-only
-LSTM (Residual)	96.0%	0.960	35 min	1× GPU
-DistilBERT	98.7%	0.987	68 min	1× GPU
-For detailed predictions and expert comments, see annotated_outcome.pdf.
+- `data/news-dataset.csv`: 6,000 labeled news articles (train/val split)
+- `data/news-challenge.csv`: 1,000 unlabeled articles for final testing
 
+#### 3. Documentation
+
+- `report.pdf`: Full technical paper (methodology, experiments, conclusions)
+- `annotated_outcome.pdf`: Model predictions with expert annotations on test set
+
+## 📊 Benchmark Results
+
+| Model           | Accuracy | F1 Score | Training Time | Hardware   |
+|----------------|----------|----------|----------------|------------|
+| XGBoost         | 93.0%    | 0.930    | 2 min          | CPU-only   |
+| LSTM (Residual) | 96.0%    | 0.960    | 35 min         | 1× GPU     |
+| **DistilBERT**  | **98.7%**| **0.987**| 68 min         | 1× GPU     |
+
+For detailed predictions and expert comments, see `annotated_outcome.pdf`.
+
+## 🧠 Model Analysis
+
+- **Traditional models** are fast and lightweight, ideal for CPU-only environments.
+- **LSTM** captures sequential context and outperforms traditional models.
+- **DistilBERT** delivers the best performance due to deep semantic understanding but requires more compute and time.
+- All experiments are reproducible with fixed seeds and saved hyperparameters.
+
+## ⚙️ Advanced Features
+
+- Custom text preprocessing rules via `text_cleaner.py`
+- Export models in ONNX or PyTorch for deployment
+- All configurations and seeds are locked for reproducibility
