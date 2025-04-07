@@ -1,36 +1,23 @@
-# News Sentiment Classification with ML and Transformers
+News Classification Benchmark: From Traditional ML to Transformers
+This repository contains a comprehensive study comparing machine learning approaches for news categorization. Our work evaluates traditional machine learning, deep learning, and Transformer-based models on a dataset spanning five news domains: Business, Entertainment, Politics, Sports, and Technology. Detailed methodology, experiments, and results are documented in our full technical report.
 
-This project implements a **multi-class sentiment classification system** for news articles, categorizing text into five topics: Business, Entertainment, Politics, Sports, and Technology. It compares traditional machine learning (Logistic Regression, XGBoost), deep learning (RNN, LSTM), and Transformer-based (DistilBERT) models, with DistilBERT achieving the highest accuracy (98.7%). The pipeline includes data preprocessing, feature engineering, hyperparameter tuning, and performance evaluation.
+Overview
+The project benchmarks multiple models for news categorization:
 
-## Key Features
-- **Multi-Model Comparison**: Evaluates Logistic Regression, XGBoost, FNN, RNN, LSTM, and DistilBERT.
-- **Advanced Techniques**:  
-  - TF-IDF and Word2Vec for feature engineering.  
-  - Optuna for hyperparameter optimization.  
-  - Layer normalization and residual connections in LSTM.  
-- **Business-Ready**: Focuses on deployability and computational trade-offs (e.g., DistilBERT vs. Logistic Regression).
+Traditional ML & Deep Learning Models
 
-## Results
-| Model          | Weighted F1 | Accuracy |
-|----------------|-------------|----------|
-| Logistic Regression | 0.963       | 0.963    |
-| LSTM           | 0.960       | 0.960    |
-| **DistilBERT**     | **0.987**   | **0.987**|
+Logistic Regression, XGBoost, RNN, and LSTM
 
-## Repository Structure
+Transformer-based Model
 
-├── data/
-│   ├── news-dataset.csv       # Labeled training data (5 categories)
-│   └── news-challenge.csv     # Test data for predictions
-│
-├── models/
-│   ├── xgb_model.json         # Serialized XGBoost model
-│   ├── BERT_best_params.json  # Optimal parameters for BERT
-│   └── FNN_best_params.json   # Optimal parameters for Feedforward NN
-│
-├── scripts/
-│   ├── ML&DL.py      # Traditional ML/DL model training
-│   ├── BERT.py       # BERT fine-tuning and evaluation  
-│   └── Pred.py          # End-to-end prediction pipeline
-│
-└── README.md                  # This documentation
+DistilBERT
+
+Key findings from our experiments include:
+
+DistilBERT achieved the highest accuracy of 98.7% with strong F1 performance.
+
+LSTM provided competitive results among deep learning methods.
+
+Traditional models such as Logistic Regression and XGBoost were efficient but less effective in handling contextual nuances.
+
+Our experiments also cover detailed aspects such as text preprocessing, feature engineering (including TF-IDF, N-grams, and Word2Vec), hyperparameter optimization using Optuna, and evaluation metrics like weighted F1 score and overall accuracy.
