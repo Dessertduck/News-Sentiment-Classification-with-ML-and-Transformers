@@ -1,23 +1,49 @@
-News Classification Benchmark: From Traditional ML to Transformers
-This repository contains a comprehensive study comparing machine learning approaches for news categorization. Our work evaluates traditional machine learning, deep learning, and Transformer-based models on a dataset spanning five news domains: Business, Entertainment, Politics, Sports, and Technology. Detailed methodology, experiments, and results are documented in our full technical report.
+# News Classification Benchmark: From Traditional ML to Transformers
 
-Overview
-The project benchmarks multiple models for news categorization:
+This project presents a comprehensive comparison of traditional machine learning, deep learning, and Transformer-based models for news classification across five categories: Business, Entertainment, Politics, Sports, and Technology. We evaluate performance across multiple architectures, with our best result achieving **98.7% accuracy** using **DistilBERT**.
 
-Traditional ML & Deep Learning Models
+## 📌 Highlights
 
-Logistic Regression, XGBoost, RNN, and LSTM
+- Achieves **98.7% accuracy** with DistilBERT
+- Includes traditional ML models (Logistic Regression, XGBoost)
+- Implements deep learning models (RNN, LSTM with residual)
+- Full technical documentation and expert-annotated predictions
+- Supports model export and reproducibility
 
-Transformer-based Model
+## 📁 Project Structure
 
-DistilBERT
+data/ │ news-dataset.csv # 6,000 labeled articles (train/val) │ news-challenge.csv # 1,000 unlabeled articles (test) models/ │ xgb_model.json # Trained XGBoost model │ FNN_best_params.json # Best parameters for feedforward model │ BERT_best_params.json # Best parameters for DistilBERT scripts/ │ ML&DL.py # Trains traditional and deep learning models │ BERT.py # Fine-tunes DistilBERT │ Pred.py # End-to-end prediction pipeline report.pdf # Full technical report (methods, experiments) annotated_outcome.pdf # Expert-reviewed model predictions on test set
 
-Key findings from our experiments include:
+shell
+复制
+编辑
 
-DistilBERT achieved the highest accuracy of 98.7% with strong F1 performance.
+## 🚀 Getting Started
 
-LSTM provided competitive results among deep learning methods.
+### Environment Setup
 
-Traditional models such as Logistic Regression and XGBoost were efficient but less effective in handling contextual nuances.
+```bash
+conda env create -f environment.yml
+Training Models
+1. Traditional & Deep Learning Models
+bash
+复制
+编辑
+python scripts/ML&DL.py --data data/news-dataset.csv --optimize
+2. Transformer-based Model (DistilBERT)
+bash
+复制
+编辑
+python scripts/BERT.py --data data/news-dataset.csv --epochs 10
+Run Predictions
+bash
+复制
+编辑
+python scripts/Pred.py --model bert --input data/news-challenge.csv
+📊 Benchmark Results
+Model	Accuracy	F1 Score	Training Time	Hardware
+XGBoost	93.0%	0.930	2 min	CPU-only
+LSTM (Residual)	96.0%	0.960	35 min	1× GPU
+DistilBERT	98.7%	0.987	68 min	1× GPU
+For detailed predictions and expert comments, see annotated_outcome.pdf.
 
-Our experiments also cover detailed aspects such as text preprocessing, feature engineering (including TF-IDF, N-grams, and Word2Vec), hyperparameter optimization using Optuna, and evaluation metrics like weighted F1 score and overall accuracy.
